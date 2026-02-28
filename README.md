@@ -5,10 +5,9 @@ A backend web service that identifies and keeps track of a customer's identity a
 ## 🚀 Live Endpoint
 
 ```
-POST https://<your-render-url>/identify
+POST https://bitespeed-task-gamma.vercel.app/identify
 ```
 
-> **Note:** Replace `<your-render-url>` with your Render deployment URL after deploying.
 
 ## 📖 API Documentation
 
@@ -40,7 +39,7 @@ Accepts a JSON body with optional `email` and/or `phoneNumber` fields and return
 
 **Request:**
 ```bash
-curl -X POST https://<your-render-url>/identify \
+curl -X POST https://bitespeed-task-gamma.vercel.app/identify \
   -H "Content-Type: application/json" \
   -d '{"email": "mcfly@hillvalley.edu", "phoneNumber": "123456"}'
 ```
@@ -62,7 +61,7 @@ curl -X POST https://<your-render-url>/identify \
 - **Runtime:** Node.js with TypeScript
 - **Framework:** Express.js
 - **Database:** PostgreSQL (via Prisma ORM)
-- **Hosting:** Render.com
+- **Hosting:** Vercel
 
 ## 🛠️ Local Setup
 
@@ -101,17 +100,13 @@ curl -X POST https://<your-render-url>/identify \
 
 The server will start on `http://localhost:3000`.
 
-## 🌐 Deployment on Render
+## 🌐 Deployment on Vercel
 
-1. Create a new **Web Service** on [Render](https://render.com)
-2. Connect your GitHub repository
-3. Set environment variables:
-   - `DATABASE_URL` — your PostgreSQL connection string
-   - `NODE_ENV=production`
-4. Set **Build Command:** `npm install && npx prisma generate && npm run build`
-5. Set **Start Command:** `npm start`
+1. **Database:** Create a free PostgreSQL database on [Neon.tech](https://neon.tech) and copy the connection string.
+2. **Vercel:** Create a new project on [Vercel](https://vercel.com) and connect your GitHub repository.
+3. **Environment Variables:** Add `DATABASE_URL` with your Neon connection string in the Vercel project settings.
+4. **Deploy:** Click deploy. Vercel will automatically build the API and run Prisma database push using the provided `vercel-build` script.
 
-Render provides a free PostgreSQL database — create one and copy its connection string.
 
 ## 📝 Identity Reconciliation Logic
 
